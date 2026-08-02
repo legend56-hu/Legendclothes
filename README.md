@@ -126,7 +126,7 @@ Open `js/products.js` and edit the `PRODUCTS` array:
   category: "T-shirts & Tops",    // Category (must match a CATEGORIES entry)
   price: 18.00,                   // Unit price in USD
   moq: 50,                        // Minimum Order Quantity
-  image: "https://...",           // Image URL
+  image: "images/product-1-tee.jpg",  // Local image path (or URL)
   description: "..."              // Short description
 }
 ```
@@ -135,14 +135,30 @@ To add a new product, copy an existing product object and change the values. Mak
 
 ### Replacing Placeholder Images
 
-1. Add your product photos to an `images/` folder (create it next to `index.html`)
-2. Update the `image` field in `js/products.js`:
+The project includes placeholder images in the `images/` folder:
 
+| File | Product |
+|------|---------|
+| `hero-bg.jpg` | Hero section background |
+| `product-1-tee.jpg` | Classic Essential Tee |
+| `product-2-polo.jpg` | Urban Graphic Polo |
+| `product-3-hoodie.jpg` | Premium Fleece Hoodie |
+| `product-4-sweatshirt.jpg` | Oversized Crew Sweatshirt |
+| `product-5-jeans.jpg` | Slim Fit Denim Jeans |
+| `product-6-cargo.jpg` | Casual Cargo Pants |
+| `product-7-dress.jpg` | Elegant Summer Dress |
+| `product-8-suit.jpg` | Tailored Business Suit |
+| `placeholder.svg` | Fallback image if a product photo fails to load |
+
+**To use your own photos:**
+
+1. Replace the files in `images/` with your own photos (keep the same filenames, or update the paths in `js/products.js`)
+2. Recommended image size: **600×400px** for products, **1600×900px** for hero background
+3. Supported formats: `.jpg`, `.png`, `.webp`
+
+Or use an online image URL instead:
 ```javascript
-image: "images/my-tshirt.jpg",
-```
-
-Or use any online image URL (Unsplash, your CDN, etc.).
+image: "https://your-cdn.com/my-tshirt.jpg",
 
 ### Changing the Notification Email
 
@@ -188,13 +204,24 @@ Open `css/style.css`, find the `.hero` class, and replace the background URL:
 
 ```
 legend-website/
-├── index.html          # Main HTML file
+├── index.html              # Main HTML file
 ├── css/
-│   └── style.css       # All styles
+│   └── style.css           # All styles
 ├── js/
-│   ├── products.js     # Product data (edit this to change products)
-│   └── main.js         # App logic + EmailJS config
-└── README.md           # This file
+│   ├── products.js         # Product data (edit this to change products)
+│   └── main.js             # App logic + EmailJS config
+├── images/                 # All product & background images
+│   ├── hero-bg.jpg         # Hero section background
+│   ├── product-1-tee.jpg   # Product photos...
+│   ├── product-2-polo.jpg
+│   ├── product-3-hoodie.jpg
+│   ├── product-4-sweatshirt.jpg
+│   ├── product-5-jeans.jpg
+│   ├── product-6-cargo.jpg
+│   ├── product-7-dress.jpg
+│   ├── product-8-suit.jpg
+│   └── placeholder.svg     # Fallback image
+└── README.md               # This file
 ```
 
 ---
@@ -231,8 +258,9 @@ legend-website/
 - Check your spam/junk folder
 
 **Q: Images not loading**
-- Ensure you have an internet connection (placeholder images load from Unsplash)
-- If using local images, verify the file paths are correct
+- All images are stored locally in the `images/` folder — make sure it's uploaded with the project
+- If using your own images, verify the filenames match what's in `js/products.js`
+- A fallback `placeholder.svg` displays automatically if an image is missing
 
 **Q: Website shows "Demo Mode" message**
 - This means EmailJS keys haven't been configured yet. Follow the EmailJS Setup section above.
